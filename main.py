@@ -99,7 +99,7 @@ def distribuir_palabras_anillos(palabras, font_size, radio_inicial, incremento_r
 def generar_vinilo_svg(
     texto,
     font_size=16,
-    radio_inicial=100,
+    radio_inicial=120,
     incremento_radio=40,
     font_name="CourierPrime-Regular",
     google_fonts_url=None,
@@ -110,7 +110,7 @@ def generar_vinilo_svg(
     margen_superior=200,       # Espacio reservado arriba (título, fecha...)
     margen_inferior=350,       # Espacio reservado abajo (canción, artista...)
     reserva_centro=80,         # Radio libre en el centro para la etiqueta del vinilo
-    radio_disco=None,          # Radio del círculo negro (por defecto: radio_inicial - 10)
+    radio_disco=None,          # Radio del círculo negro (por defecto: radio_inicial - 30)
     radio_etiqueta=None,       # Radio de la etiqueta de color (por defecto: reserva_centro * 0.75)
     color_etiqueta="#ff0000",  # Color de la etiqueta central
     hueco_aguja_grados=15      # Grados libres reservados para la aguja del tocadiscos
@@ -128,12 +128,9 @@ def generar_vinilo_svg(
 
     # Radios por defecto
     if radio_disco is None:
-        radio_disco = radio_inicial - 10
+        radio_disco = radio_inicial - 30
     if radio_etiqueta is None:
         radio_etiqueta = reserva_centro * 0.75
-
-    # --- Fondo blanco ---
-    dwg.add(dwg.rect(insert=(0, 0), size=(canvas_ancho, canvas_alto), fill="white"))
 
     # Importar Google Fonts si se indica
     if google_fonts_url:
@@ -229,9 +226,9 @@ if __name__ == "__main__":
 
     generar_vinilo_svg(
         texto_completo,
-        font_size=20,
-        radio_inicial=125,
-        incremento_radio=40,
+        font_size=30,
+        radio_inicial=200,
+        incremento_radio=45,
         font_name="CourierPrime-Regular",
         font_path="fonts/CourierPrime-Regular.ttf",
         canvas_ancho=1587,
